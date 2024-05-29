@@ -23,8 +23,9 @@ module.exports = (res, email, name) => {
    let transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-         user: "otpfoodie@gmail.com",
-         pass: "lryw mcug enfq utrf", // https://myaccount.google.com/apppasswords c'est le lien pour avoir le mot de passe d'application
+         // votre adresse mail et mot de passe d'aplication fourni par gmail
+         user: "",
+         pass: "", // https://myaccount.google.com/apppasswords c'est le lien pour avoir le mot de passe d'application
       },
       tls: {
          rejectUnauthorized: false,
@@ -33,7 +34,8 @@ module.exports = (res, email, name) => {
 
    // Définissez les options de l'e-mail
    let mailOptions = {
-      from: "otpfoodie@gmail.com",
+       //votre adresse mail 
+      from: "",
       to: email,
       subject: "Verification OTP",
       html: `
