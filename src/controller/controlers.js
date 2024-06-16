@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
 require("dotenv").config({ path: "./../../.env" });
 const key = process.env.KEY;
 
@@ -52,9 +53,8 @@ const addCommt = async (req, res) => {
          commantaire: commantaire,
       });
       try {
-         await newCommantaire.save();
-         const message = "commantaire ajouter avec succes";
-         res.status(201).json(message);
+        const saveres= await newCommantaire.save();
+         res.status(201).json(saveres);
       } catch (error) {
          const message =
             "nous avons du mal a ajouter le commantaire réessaiyze plus tard";
@@ -261,7 +261,81 @@ const sauvegarde_utilisateur = async (req, res) => {
       res.status(200).json({ message, id: post._id });
    });
 };
+
+const sendMsg = (req,res)=>{
+   let msg = req.body.message
+   let subjet = req.body.subjet
+   let name = req.body.name
+
+   let transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+         user: "otpfoodie@gmail.com",
+         pass: "lryw mcug enfq utrf", // https://myaccount.google.com/apppasswords c'est le lien pour avoir le mot de passe d'application
+      },
+      tls: {
+         rejectUnauthorized: false,
+      },
+   });
+
+      // Définissez les options de l'e-mail
+      let mailOptions = {
+         from: "otpfoodie@gmail.com",
+         to: "takamloic35@gmail.com",
+         subject:subjet,
+         html: `
+          <p style="font-size:18px;">ceci est un message provenant d'un visiteur de votre site</p>
+           <div
+               style="
+               background-color: rgb(2, 2, 49);
+               color: white;
+               width: 100%;
+               font-size:20px;
+               text-align: center;
+               "
+           >
+           <p>
+            nom: ${name} <br/>
+            message: ${msg}
+           </p>
+           
+           </div>
+           `,
+      };
+
+         // Envoyez l'e-mail
+   transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+         const message = "echec d'envoi du message";
+         res.status(500).json({ message, error });
+         return console.log("Erreur lors de l'envoi de l'e-mail:", error);
+      }
+      const message = "message envoyer avec success";
+      res.status(200).json({ message });
+      console.log("message envoyer avec success", info.messageId);
+   });
+}
+
+
+const deletCommt = async (req,res)=>{
+
+  const id = req.params.id
+
+try {
+   await ShemaCommt.deleteOne({_id:id})
+   const message = "suprimer avec succes"
+   res.status(202).json(message)
+} catch (error) {
+   console.log(error);
+   const message = "echec de suppresion du commantaire"
+   res.status(500).json(message)
+}
+
+
+}
 module.exports = {
+   deletCommt,
+   sendMsg,
    findAllProduit,
    findProduitById,
    addCommt,
