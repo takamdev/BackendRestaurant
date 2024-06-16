@@ -24,6 +24,8 @@ require("./src/routes/addCommd.js")(app);
 require("./src/routes/getCommd.js")(app);
 require("./src/routes/authantif.js")(app);
 require("./src/routes/deleteCommd.js")(app);
+require("./src/routes/sendMsg.js")(app)
+require("./src/routes/deleteCommt.js")(app)
 
 app.get("/api", (req, res) => {
    res.send("hello world");

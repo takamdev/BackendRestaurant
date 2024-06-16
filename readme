@@ -8,6 +8,17 @@ id_prod_comd,
 id_util_comd,
 qte
 }
+}
+,
+{
+contact
+methode http : post
+router : /api/contact
+shemaAttendue:{
+    let msg = req.body.message,
+    let subjet = req.body.subjet,
+    let name = req.body.name,
+}
 },
 {
 ajout de commantaire
