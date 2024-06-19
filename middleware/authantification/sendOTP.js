@@ -3,19 +3,20 @@ const nodemailer = require("nodemailer");
 const fs = require("fs");
 
 module.exports = (res, email, name) => {
-   const secret = speakeasy.generateSecret();
-   const ms = secret.base32;
-   const filepatch = `./src/auth/temp/${name}.txt`;
-
+   const secret = speakeasy.generateSecret(); // generation d'un secret pour l'utilisateur
+   const ms = secret.base32; // encodage du secret
+   const filepatch = `./middleware/authantification/temp/${name}.txt`;
+   
+   // ecriture du secret dans un fichier txt
    fs.writeFile(filepatch, ms, (err) => {
       if (err) console.log("erreur" + err);
       else console.log("ecris avec succes");
    });
-   //generer et envoie le token a l'utilisateur
+   //generer et envoie le token d'authantification a l'utilisateur a l'utilisateur
    const token = speakeasy.totp({
-      secret: secret.base32,
-      encoding: "base32",
-      step: 1800,
+      secret: ms, // secret
+      encoding: "base32", // encodage du secret
+      step: 1800, // validité du token 1800 secondes
    });
    // envoie de l'email a l'utilisateur
 
