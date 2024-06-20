@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "start":"node index.js"
-
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -23,7 +22,6 @@
     "speakeasy": "^2.0.0"
   },
   "devDependencies": {
-    "axios": "^1.6.8",
     "mailgen": "^2.0.28",
     "morgan": "^1.10.0",
     "nodemon": "^3.1.0"
