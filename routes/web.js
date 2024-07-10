@@ -11,7 +11,7 @@ Route.post("/api/sign-up/otp-auth", veryOTP, controler.sauvegarde_utilisateur);
 Route.post("/api/commd/delete/:id", auth, controler.deleteCommd);
 Route.post("/api/comment/delete/:id", auth, controler.deletCommt);
 Route.post("/api/user/delete/:id", auth, controler.deleteUser);
-Route.get("/api/produits", controler.findAllProduit);
+Route.get("/", controler.findAllProduit);
 Route.get("/api/produit/:id", controler.findProduitById);
 Route.get("/api/commande/:id", auth, controler.getCommd);
 Route.get("/api/commentaire/:id", auth, controler.getcommt);
