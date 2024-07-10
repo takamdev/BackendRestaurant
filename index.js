@@ -23,6 +23,8 @@ app.listen(process.env.PORT, () => {
    );
 });
 
+
+
 //connexion a la base de donnée
 mongoDB.set('strictQuery',true)
 mongoDB.connect(process.env.URLBD).then(()=>{
