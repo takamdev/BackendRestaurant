@@ -47,7 +47,7 @@ router : /api/user/delete/:id
 {
 recuperer tout les produits
 methode http : get
-router : /api/produits
+router : /
 },
 ,
 {
