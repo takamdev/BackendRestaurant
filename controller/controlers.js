@@ -1,8 +1,8 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
-require("dotenv").config({ path: "./../../.env" });
-const key = process.env.KEY;
+require("dotenv").config({ path: "./../.env" });
+const KEY = process.env.KEY;
 
 // importation des differents schemas de base de donnée
 const {
@@ -183,7 +183,7 @@ const connexion = (req, res) => {
                      // cas ou les informations de connexion sont authantifier avec success
                      const message = `l'utilisateur est connecter avec success`;
                      // generer le tokn d'authaurisation
-                     const token = jwt.sign({ userId: user[0].id }, key, {
+                     const token = jwt.sign({ userId: user[0].id }, process.env.KEY, {
                         expiresIn: "24h",// validité du token a 24h
                      });
                      // envoie des données utilisateur
@@ -242,7 +242,7 @@ const deleteCommd = (req, res) => {
    const id = req.params.id;
    if (id) {
       console.log(id);
-      ShemaCommd.deleteMany({ id_prod_comd: id })
+      ShemaCommd.deleteOne({ _id: id })
          .then((rep) => {
             if (rep.deletedCount !== 0) {
                const message = "commade supprimer";

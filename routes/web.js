@@ -7,7 +7,7 @@ const Route = Router()
 Route.post("/api/commande/post", auth, controler.addCommd);
 Route.post("/api/commt/post", auth, controler.addCommt);
 Route.post("/api/sign", controler.connexion);
-Route.post("/api/sign-up/otp-auth", veryOTP, controler.sauvegarde_utilisateur);
+Route.post("/api/sign-up/otp-auth", veryOTP, controler.sauvegarde_utilisateur); 
 Route.post("/api/commd/delete/:id", auth, controler.deleteCommd);
 Route.post("/api/comment/delete/:id", auth, controler.deletCommt);
 Route.post("/api/user/delete/:id", auth, controler.deleteUser);
@@ -19,3 +19,4 @@ Route.post("/api/sign-up", controler.incription);
 Route.post("/api/contact", auth, controler.sendMsg);
 
 module.exports = Route;
+

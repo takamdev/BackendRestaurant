@@ -2,10 +2,10 @@ const jwt = require("jsonwebtoken");
 
 require("dotenv").config({ path: "./../../.env" });
 
-let key = process.env.KEY; // clé de dechiffrement du token d'authorisation
 
 
 module.exports = (req, res, next) => {
+   let key = process.env.KEY; // clé de dechiffrement du token d'authorisation
    // recuperation du token d'authorisation
    const authorizationHeader = req.headers.authorization;
    //si  authorizationHeader n'existe pas
