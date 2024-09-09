@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "[express] build --output public",
     "dev": "nodemon index.js",
     "start": "node index.js"
   },
