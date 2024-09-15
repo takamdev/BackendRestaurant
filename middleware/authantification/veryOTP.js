@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
    
    // si les données sont presents
    if (name && token) {
-      secret = process.env.key; // secret
+      secret = process.env.SECRET; // secret
       // authantification du token
       const isvalid = speakeasy.totp.verify({
          secret: secret,

@@ -1,13 +1,13 @@
 const speakeasy = require("speakeasy");
 const nodemailer = require("nodemailer");
-const fs = require("fs");
 
 module.exports = (res, email, name) => {
+   
    //generer et envoie le token d'authantification a l'utilisateur a l'utilisateur
    const token = speakeasy.totp({
-      secret: process.env.KEY, // secret
+      secret: process.env.SECRET, // secret
       encoding: "base32", // encodage du secret
-      step: 1800, // validité du token 1800 secondes
+      step: process.env.OTPSLIP, // validité du token 1800 secondes
    });
    // envoie de l'email a l'utilisateur
 
@@ -29,7 +29,7 @@ module.exports = (res, email, name) => {
       to: email,
       subject: "Verification OTP",
       html: `
-       <p style="font-size:18px;">ceci est votre code de validation OTP ne le partager avec personne</p>
+       <p style="font-size:18px;">ceci est votre code de validation OTP valide pour  ne le partager avec personne</p>
         <div
             style="
             background-color: rgb(2, 2, 49);

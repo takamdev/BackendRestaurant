@@ -177,7 +177,7 @@ const connexion = (req, res) => {
                .then((isvalid) => {
                   if (!isvalid) {
                      // cas ou le mot de passe est incorrect
-                     const message = "mot de passe incorrect";
+                     const message = "email ou mot de passe incorrect";
                      res.status(404).json({ message });
                   } else {
                      // cas ou les informations de connexion sont authantifier avec success
@@ -203,7 +203,7 @@ const connexion = (req, res) => {
          })
          .catch((error) => {
             // cas ou l'email ou le nom d'utilisateur est incorrect
-            const message = `adresse email ou nom d'uilisateur incorrect`;
+            const message = `email ou mot de passe incorrect`;
             res.status(404).json({ error, message });
          });
    } else {
