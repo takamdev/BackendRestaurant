@@ -2,7 +2,7 @@
 
 -l'application backend du restaurant Foodie
 
--[code source du backend expressjs](https://github.com/takamdev/Foodie)
+-[code source du front-end react](https://github.com/takamdev/Foodie)
 -[tester les poinds de terminaisons](https://backend-restaurant-beta.vercel.app/)
 -[visiter l'application](https://foodie-nine-omega.vercel.app/)
 
