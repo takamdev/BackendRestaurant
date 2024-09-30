@@ -7,7 +7,7 @@
 -[visiter l'application](https://foodie-nine-omega.vercel.app/)
 
 
-/_
+
 {
 ajout de commande
 methode http : post
@@ -97,4 +97,4 @@ telephone,
 token
 }
 }
-_/
+
