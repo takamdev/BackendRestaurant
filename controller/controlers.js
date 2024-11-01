@@ -347,7 +347,7 @@ const sendMsg = (req, res) => {
       service: "gmail",
       auth: {
          user: "otpfoodie@gmail.com",
-         pass: "lryw mcug enfq utrf", // https://myaccount.google.com/apppasswords c'est le lien pour avoir le mot de passe d'application
+         pass: process.env.PASS, // https://myaccount.google.com/apppasswords c'est le lien pour avoir le mot de passe d'application
       },
       tls: {
          rejectUnauthorized: false,
